@@ -5,16 +5,16 @@ development:
       options:
         # Add any development-specific options here if needed
 
-test:
-  clients:
-    default:
-      database: searchDb
-      hosts:
-        - localhost:27017
-      options:
-        read:
-          mode: :primary
-        max_pool_size: 1
+# test:
+#   clients:
+#     default:
+#       database: searchDb
+#       hosts:
+#         - localhost:27017
+#       options:
+#         read:
+#           mode: :primary
+#         max_pool_size: 1
 
 production:
   clients:
@@ -22,4 +22,5 @@ production:
       uri: mongodb+srv://Fed1k:vplSDClfi1yftoWg@cluster0.f1egczk.mongodb.net/searchDb?retryWrites=true&w=majority
       
       options:
+        auth_mech: scram
         # Add any production-specific options here if needed
