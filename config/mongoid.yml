@@ -1,7 +1,7 @@
 development:
   clients:
     default:
-      uri: mongodb+srv://Fed1k:fed1k2002@cluster0.f1egczk.mongodb.net/searchDb?retryWrites=true&w=majority
+      uri: mongodb+srv://Fed1k:fed1k2002@cluster0.f1egczk.mongodb.net/?retryWrites=true&w=majority
       options:
         # Add any development-specific options here if needed
 
@@ -19,6 +19,6 @@ test:
 production:
   clients:
     default:
-      uri: mongodb+srv://Fed1k:fed1k2002@cluster0.f1egczk.mongodb.net/searchDb?retryWrites=true&w=majority
+      uri: mongodb+srv://Fed1k:fed1k2002@cluster0.f1egczk.mongodb.net/?retryWrites=true&w=majority
       options:
         # Add any production-specific options here if needed
