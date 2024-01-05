@@ -3,7 +3,7 @@ class AnalyticsController < ApplicationController
 
   # GET /analytics or /analytics.json
   def index
-    @analytic_trend = Analytic.all.group_by(&:searchQuery).map{|k,v| [k, v.count]}.sort_by{|k,v| v}.reverse
+    @analytic_trend = Analytic.where(ip: request.remote_ip).group_by(&:searchQuery).map{|k,v| [k, v.count]}.sort_by{|k,v| v}.reverse
   end
 
   # GET /searchQueryanalytics/1 or /analytics/1.json
