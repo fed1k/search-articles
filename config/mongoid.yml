@@ -19,8 +19,8 @@ development:
 production:
   clients:
     default:
-      uri: mongodb+srv://Fed1k:vplSDClfi1yftoWg@cluster0.f1egczk.mongodb.net/searchDb?retryWrites=true&w=majority
+      uri: mongodb+srv://Fed1k:vplSDClfi1yftoWg@cluster0.f1egczk.mongodb.net/searchDb?retryWrites=true&w=majority&authSource=admin
       
       options:
-        auth_mech: scram
+        auth_mech: :scram
         # Add any production-specific options here if needed
