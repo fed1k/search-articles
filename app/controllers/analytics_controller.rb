@@ -1,9 +1,22 @@
+require 'IPinfo'
 class AnalyticsController < ApplicationController
   before_action :set_analytic, only: %i[ show edit update destroy ]
 
   # GET /analytics or /analytics.json
   def index
-    @analytic_trend = Analytic.where(ip: request.ip).group_by(&:searchQuery).map{|k,v| [k, v.count]}.sort_by{|k,v| v}.reverse
+    ip = ipinfo()
+    if ip 
+      @analytic_trend = Analytic.where(ip: ip).group_by(&:searchQuery).map{|k,v| [k, v.count]}.sort_by{|k,v| v}.reverse
+    end
+  end
+
+  def ipinfo
+    
+    access_token = 'd5d41ac8302a60'
+    handler = IPinfo::create(access_token)
+    details = handler.details()
+    city = details.ip
+    return city
   end
 
   # GET /searchQueryanalytics/1 or /analytics/1.json
@@ -13,7 +26,6 @@ class AnalyticsController < ApplicationController
   # GET /analytics/new
   def new
     @analytic = Analytic.new
-    @ip = request.ip
   end
 
   # GET /analytics/1/edit
@@ -59,8 +71,11 @@ class AnalyticsController < ApplicationController
   end
 
   def save_log
-    @analytic = Analytic.new({ip: request.ip, searchQuery: params[:searchQuery]})
-    @analytic.save
+    ip = ipinfo()
+    if ip
+      @analytic = Analytic.new({ip: ip, searchQuery: params[:searchQuery]})
+      @analytic.save
+    end
   end
 
   private

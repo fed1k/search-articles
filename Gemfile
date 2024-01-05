@@ -42,6 +42,8 @@ gem "bootsnap", require: false
 
 gem "mongoid"
 
+gem "IPinfo"
+
 gem 'concurrent-ruby'
 
 group :development, :test do
