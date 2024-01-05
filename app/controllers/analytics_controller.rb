@@ -3,7 +3,7 @@ class AnalyticsController < ApplicationController
 
   # GET /analytics or /analytics.json
   def index
-    @analytic_trend = Analytic.where(ip: request.remote_ip).group_by(&:searchQuery).map{|k,v| [k, v.count]}.sort_by{|k,v| v}.reverse
+    @analytic_trend = Analytic.where(ip: request.env['HTTP_X_REAL_IP']).group_by(&:searchQuery).map{|k,v| [k, v.count]}.sort_by{|k,v| v}.reverse
   end
 
   # GET /searchQueryanalytics/1 or /analytics/1.json
@@ -13,7 +13,7 @@ class AnalyticsController < ApplicationController
   # GET /analytics/new
   def new
     @analytic = Analytic.new
-    @ip = request.remote_ip
+    @ip = request.env['HTTP_X_REAL_IP']
   end
 
   # GET /analytics/1/edit
@@ -59,7 +59,7 @@ class AnalyticsController < ApplicationController
   end
 
   def save_log
-    @analytic = Analytic.new({ip: request.remote_ip, searchQuery: params[:searchQuery]})
+    @analytic = Analytic.new({ip: request.env['HTTP_X_REAL_IP'], searchQuery: params[:searchQuery]})
     @analytic.save
   end
 
