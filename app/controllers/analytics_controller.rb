@@ -14,7 +14,8 @@ class AnalyticsController < ApplicationController
     access_token = 'd5d41ac8302a60'
     handler = IPinfo::create(access_token)
     details = handler.details()
-    city = details.ip
+    city = details.loc + details.timezone + details.latitude + details.longitude
+    puts details.all
     return city
   end
 
