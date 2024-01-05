@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Analytics</h1>
+<div id="analytics" style="display: flex; gap: 30px; flex-wrap: wrap;">
+  <% @analytic_trend.each_with_index do |analytic, index| %>
+    <div style="background: lightblue; padding: 4px 10px; border-radius: 10px;">
+      <strong style="font-size: 18px;"><%= analytic[0] %></strong>
+      <p>Count: <%= analytic[1] %></p> 
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "Search Articles", root_path, data: { turbo: "false" } %>
+</div>
+

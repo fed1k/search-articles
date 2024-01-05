@@ -1,0 +1,24 @@
+Rails.application.routes.draw do
+  resources :articles
+  resources :analytics do
+    collection do
+      delete 'destroy_all', to: 'analytics#destroy_all'
+    end
+  end
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  get "up" => "rails/health#show", as: :rails_health_check
+
+  post "save_log" => "analytics#save_log", as: :save_log
+
+  post "search" => "articles#search", as: :search
+
+  # get "search" => "articles#search", as: :search
+
+  root "articles#index"
+
+  # Defines the root path route ("/")
+  # root "posts#index"
+end

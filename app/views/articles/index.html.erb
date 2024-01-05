@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<div style="display: flex; width: 100%; justify-content: space-between;">
+  <div>
+    <input style="border-radius: 6px; padding: 6px 8px; border: 1px solid lightgray; outline: none;" id="search" type="text" placeholder="Search Articles" />
+    <br>
+  </div>
+  <div>
+    <%= link_to "Analytics", analytics_path %>
+  </div>
+</div>
+
+<div id="articles">
+  <% @articles.each do |article| %>
+    <%= render article %>
+  <% end %>
+</div>
