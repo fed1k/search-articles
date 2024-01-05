@@ -1,4 +1,3 @@
-require 'IPinfo'
 class AnalyticsController < ApplicationController
   before_action :set_analytic, only: %i[ show edit update destroy ]
 
