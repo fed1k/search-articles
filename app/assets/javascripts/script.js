@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("search");
-  searchInput.addEventListener("focus", function () {
-    searchInput.style.boxShadow = "0 0 3px 0 #d3d3d3";
-  })
-  searchInput.addEventListener("blur", function () {
-    searchInput.style.boxShadow = "0 0 0 0";
-  })
+  // searchInput.addEventListener("focus", function () {
+  //   searchInput.style.boxShadow = "0 0 3px 0 #d3d3d3";
+  // })
+  // searchInput.addEventListener("blur", function () {
+  //   searchInput.style.boxShadow = "0 0 0 0";
+  // })
   let arr = [];
   const articlesContainer = document.getElementById("articles");
   searchInput.addEventListener("input", function () {
